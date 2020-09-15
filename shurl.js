@@ -75,7 +75,7 @@ function shortenUrl() {
       })
       .then(() => {
         window.location.hash = "";
-        window.history.replaceState({}, document.title, "/");
+        window.history.replaceState({}, document.title, "/shurl/");
       })
       .catch((err) => console.log(`${err.name}:${err.message}`));
   } else {
