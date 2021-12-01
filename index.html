@@ -1,0 +1,97 @@
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>&#65279;</title>
+    <style>
+      html {
+        line-height: 1.15;
+        -webkit-text-size-adjust: 100%;
+      }
+      body {
+        margin: 0;
+        height: 100%;
+        width: 100%;
+      }
+      .none {
+        display: none;
+      }
+      .flex {
+        display: -webkit-box;
+        display: -moz-box;
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: flex;
+      }
+    </style>
+  </head>
+  <body
+    class="none"
+    style="
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      flex: auto;
+    "
+    onload="documentOnload()"
+  >
+    <div
+      style="
+        white-space: nowrap;
+        font-size: xx-large;
+        font-weight: bolder;
+        text-transform: uppercase;
+      "
+    >
+      URL Shortener
+    </div>
+    <div
+      style="
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 80%;
+        margin-top: 40;
+      "
+    >
+      <input
+        type="url"
+        id="urlInput"
+        style="
+          flex: 1;
+          height: 40px;
+          margin-right: 10;
+          text-align: center;
+          font-size: larger;
+        "
+        required
+      />
+      <input
+        type="submit"
+        value="Shorten URL"
+        onclick="shortenUrl()"
+        style="flex: 0; height: 40px"
+      />
+    </div>
+    <div
+      id="shortenedUrlContainer"
+      style="display: none; margin-top: 40; white-space: nowrap"
+    >
+      Shortened URL:&nbsp;&nbsp;<a
+        id="shortenedUrl"
+        href="#"
+        onclick="redirect(this)"
+      ></a>
+    </div>
+    <script>
+      function redirect(anchor) {
+        if (window.location.href === anchor.getAttribute("href")) {
+          window.location.reload();
+        } else {
+          window.location.href = anchor.getAttribute("href");
+          window.location.reload();
+        }
+      }
+    </script>
+    <script src="shurl.js"></script>
+  </body>
+</html>

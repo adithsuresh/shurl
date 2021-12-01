@@ -1,3 +1,2 @@
 # shurl
-simple url shortener for shortening long urls<br/>
-made with html,css, js and jsonbox.io<br/>
+Simple **URL Shortener** made with HTML, CSS, JS and Krates for shortening long url's<br/>
