@@ -96,8 +96,19 @@ const documentOnload = () => {
     document.body.style.background = `url("./img/bg.jpg") repeat fixed top center`;
     document.body.style.backgroundColor = primaryColor;
     document.title = "SHURL - Simple URL Shortener";
+    setFavicon("/images/logo.png");
   }
 };
+
+function setFavicon(faviconPath) {
+  var link = document.querySelector("link[rel~='icon']");
+  if (!link) {
+    link = document.createElement("link");
+    link.rel = "icon";
+    document.querySelector("head").appendChild(link);
+  }
+  link.href = faviconPath;
+}
 
 document.onreadystatechange = onReadyStateChange;
 document.addEventListener("DOMContentLoaded", onDomLoad);
