@@ -1,14 +1,11 @@
 var endpoint = "https://krat.es/889a1a171999ef0aaa37";
 var apikey = "6e23c01a-9c1c-4bcf-b9bc-f3f738d09daf";
 var hash = window.location.hash.substr(1);
-
+var primaryColor = "#038970";
 function getUrl() {
   var url = document.getElementById("urlInput").value;
   if (url) {
-    var protocol =
-      url.startsWith("http://") ||
-      url.startsWith("https://") ||
-      url.startsWith("ftp://");
+    var protocol = url.startsWith("http://") || url.startsWith("https://") || url.startsWith("ftp://");
     if (Boolean(protocol) === false) {
       let newUrl = "http://" + url;
       return newUrl;
@@ -20,8 +17,7 @@ function getUrl() {
 }
 
 const generateRandomString = (stringLength = 5) => {
-  let charSet =
-    "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+  let charSet = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
   let randomString = Array.apply(null, Array(stringLength))
     .map(() => {
       return charSet.charAt(Math.floor(Math.random() * charSet.length));
@@ -36,11 +32,7 @@ function setHash() {
   }
 }
 
-const postData = async (
-  url = "",
-  data = {},
-  contentType = "application/json"
-) => {
+const postData = async (url = "", data = {}, contentType = "application/json") => {
   if (url && data) {
     const response = await fetch(url, {
       method: "POST",
@@ -70,8 +62,7 @@ function shortenUrl() {
     postData(`${endpoint}/${window.location.hash.substr(1)}`, { url: longUrl })
       .then((data) => {
         console.log("postData", data);
-        document.querySelector("#shortenedUrl").innerHTML =
-          window.location.href;
+        document.querySelector("#shortenedUrl").innerHTML = window.location.href;
         document.querySelector("#shortenedUrl").href = window.location.href;
         document.querySelector("#shortenedUrlContainer").style.display = "flex";
       })
@@ -98,7 +89,8 @@ const documentOnload = () => {
   } else {
     document.body.classList.remove("none");
     document.body.classList.add("flex");
-    document.body.style.backgroundColor = "#d7ccc8";
+    document.body.style.background = `url("../img/bg.jpg") repeat fixed top center`;
+    document.body.style.backgroundColor = primaryColor;
     document.title = "SHURL - Simple URL Shortener";
   }
 };

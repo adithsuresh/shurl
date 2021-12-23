@@ -1,69 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>&#65279;</title>
-    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/normalize.css" />
+    <link rel="stylesheet" href="./css/style.css" />
   </head>
-  <body
-    class="none"
-    style="
-      align-items: center;
-      justify-content: center;
-      flex-direction: column;
-      flex: auto;
-    "
-    onload="documentOnload()"
-  >
-    <div
-      style="
-        white-space: nowrap;
-        font-size: xx-large;
-        font-weight: bolder;
-        text-transform: uppercase;
-      "
-    >
+  <body class="none" onload="documentOnload()">
+    <div style="white-space: nowrap; font-size: xx-large; font-weight: bolder; text-transform: uppercase; color: #fff">
       URL Shortener
     </div>
-    <div
-      style="
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 80%;
-        margin-top: 40px;
-      "
+    <form
+      style="display: flex; align-items: center; justify-content: center; width: 80%; margin-top: 40px"
+      onsubmit="shortenUrl();return false;"
     >
       <input
         type="url"
         id="urlInput"
-        style="
-          flex: 1;
-          height: 40px;
-          margin-right: 10px;
-          text-align: center;
-          font-size: larger;
-        "
+        style="flex: 1; height: 40px; margin-right: 10px; text-align: center; font-size: larger; border-radius: 5px"
         required
       />
-      <input
-        type="submit"
-        value="Shorten URL"
-        onclick="shortenUrl()"
-        style="flex: 0; height: 40px"
-      />
-    </div>
-    <div
-      id="shortenedUrlContainer"
-      style="display: none; margin-top: 40px; white-space: nowrap"
-    >
-      Shortened URL:&nbsp;&nbsp;<a
-        id="shortenedUrl"
-        href="#"
-        onclick="redirect(this)"
-      ></a>
+      <input type="submit" value="Shorten URL" style="flex: 0; height: 40px; border-radius: 5px; padding: 0px 10px" />
+    </form>
+    <div id="shortenedUrlContainer" style="display: none; margin-top: 40px; white-space: nowrap; color: #fff">
+      Shortened URL:&nbsp;&nbsp;<a id="shortenedUrl" href="#" onclick="redirect(this)" style="color: #4caeff"></a>
     </div>
     <script>
       function redirect(anchor) {
