@@ -1,0 +1,37 @@
+@font-face {
+  font-family: "BioRhyme";
+  src: url("../fonts/BioRhyme-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+* {
+  margin: 0;
+  box-sizing: border-box;
+}
+.light-theme {
+  --white: #ffffff;
+  --primary: #038970;
+  --primary_dark: #005849;
+  --section_bg: rgba(234, 253, 251, 0.8);
+}
+html,
+body {
+  height: 100%;
+  width: 100%;
+  line-height: normal;
+  -webkit-text-size-adjust: 100%;
+}
+/* body {
+  background: url("../img/bg.jpg") repeat fixed top center;
+  background-color: var(--primary_dark);
+} */
+.none {
+  display: none;
+}
+.flex {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+}
