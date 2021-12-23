@@ -1,7 +1,7 @@
 var endpoint = "https://krat.es/889a1a171999ef0aaa37";
 var apikey = "6e23c01a-9c1c-4bcf-b9bc-f3f738d09daf";
 var hash = window.location.hash.substr(1);
-var primaryColor = "#038970";
+var bgColor = "#017661";
 function getUrl() {
   var url = document.getElementById("urlInput").value;
   if (url) {
@@ -81,23 +81,37 @@ function shortenUrl() {
   }
 }
 
-const documentOnload = () => {
+const pageRedirect = () => {
   if (window.location.hash) {
     getData(endpoint + "/" + hash)
       .then((data) => {
-        if (data && data[data?.length - 1]?.url) {
-          window.location.href = data[0].url;
+        if (data && data.length > 0) {
+          window.location.href = data[0]?.url;
+        } else {
+          let err = new Error("The URL hash code is either invalid or expired");
+          err.name = "Invalid Hash Code";
+          throw err;
         }
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        console.log(err);
+        removeHash();
+        showUrlshortner();
+      });
   } else {
-    document.body.classList.remove("none");
-    document.body.classList.add("flex");
-    document.body.style.background = `url("./img/bg.jpg") repeat fixed top center`;
-    document.body.style.backgroundColor = primaryColor;
-    document.title = "SHURL - Simple URL Shortener";
-    setFavicon("/images/logo.png");
+    removeHash();
+    showUrlshortner();
   }
+};
+
+const showUrlshortner = () => {
+  document.querySelectorAll(".balls_loader")[0].style.display = "none";
+  document.querySelectorAll(".container")[0].classList.remove("none");
+  document.body.classList.add("flex");
+  document.body.style.background = `url("./img/bg.jpg") repeat fixed top center ${bgColor}`;
+  document.body.style.backgroundColor = bgColor;
+  document.title = "SHURL - Simple URL Shortener";
+  setFavicon("/images/favicon.png");
 };
 
 function setFavicon(faviconPath) {
@@ -119,7 +133,7 @@ function onReadyStateChange(event) {
   count++;
   console.log("document state:", document.readyState);
   if (count === 1) {
-    documentOnload();
+    pageRedirect();
   }
 }
 

@@ -5,39 +5,28 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>&#65279;</title>
-    <link rel="stylesheet" href="./css/normalize.css" />
+    <link rel="stylesheet" href="./fonts/fonts.css" />
+    <link rel="stylesheet" href="./css/normalize.min.css" />
     <link rel="stylesheet" href="./css/style.css" />
-  </head>
-  <body class="none">
-    <div style="white-space: nowrap; font-size: xx-large; font-weight: bolder; text-transform: uppercase; color: #fff">
-      URL Shortener
-    </div>
-    <form
-      style="display: flex; align-items: center; justify-content: center; width: 80%; margin-top: 40px"
-      onsubmit="shortenUrl();return false;"
-    >
-      <input
-        type="url"
-        id="urlInput"
-        style="flex: 1; height: 40px; margin-right: 10px; text-align: center; font-size: larger; border-radius: 5px"
-        required
-      />
-      <input type="submit" value="Shorten URL" class="button_r" style="height: 40px;" />
-    </form>
-    <div id="shortenedUrlContainer" style="display: none; margin-top: 40px; white-space: nowrap; color: #fff">
-      <span>Shortened URL:&ensp;</span>
-      <a id="shortenedUrl" href="#" target="_blank" style="color: #4caeff"></a>
-    </div>
-    <script>
-      function redirect(anchor) {
-        if (window.location.href === anchor.getAttribute("href")) {
-          window.location.reload();
-        } else {
-          window.location.href = anchor.getAttribute("href");
-          window.location.reload();
-        }
-      }
-    </script>
+    <link rel="stylesheet" href="./css/ballsloader.css" />
     <script src="./js/app.js"></script>
+  </head>
+  <body>
+    <div class="container none">
+      <div class="title">URL Shortener</div>
+      <form id="urlForm" onsubmit="shortenUrl();return false;">
+        <input id="urlInput" type="url" required />
+        <input id="btnSubmit" type="submit" value="Shorten URL" class="button_r" />
+      </form>
+      <div id="shortenedUrlContainer" style="display: none; margin-top: 40px; white-space: nowrap; color: #eee">
+        <span>Shortened URL:&ensp;</span>
+        <a id="shortenedUrl" href="#" target="_blank" style="color: #4caeff"></a>
+      </div>
+    </div>
+    <div class="balls_loader">
+      <div class="loader_ball"></div>
+      <div class="loader_ball"></div>
+      <div class="loader_ball"></div>
+    </div>
   </body>
 </html>
