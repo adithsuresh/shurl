@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="light-theme">
   <head>
     <meta charset="utf-8" />
     <meta http-equiv="x-ua-compatible" content="ie=edge" />
@@ -22,11 +22,11 @@
         style="flex: 1; height: 40px; margin-right: 10px; text-align: center; font-size: larger; border-radius: 5px"
         required
       />
-      <input type="submit" value="Shorten URL" style="flex: 0; height: 40px; border-radius: 5px; padding: 0px 10px" />
+      <input type="submit" value="Shorten URL" class="button_r" style="height: 40px;" />
     </form>
     <div id="shortenedUrlContainer" style="display: none; margin-top: 40px; white-space: nowrap; color: #fff">
       <span>Shortened URL:&ensp;</span>
-      <a id="shortenedUrl" href="#" target="_blank" onclick="redirect(this)" style="color: #4caeff"></a>
+      <a id="shortenedUrl" href="#" target="_blank" style="color: #4caeff"></a>
     </div>
     <script>
       function redirect(anchor) {

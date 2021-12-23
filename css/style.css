@@ -39,3 +39,24 @@ body {
   display: -webkit-flex;
   display: flex;
 }
+.button_r {
+  background: var(--primary);
+  text-align: center;
+  padding: 10px 15px;
+  color: #fff;
+  font-size: 14px;
+  border: 0;
+  border-radius: 5px;
+  cursor: pointer;
+  outline: 0 !important;
+  display: inline-block;
+  transition: all 0.2s ease-out;
+}
+.button_r:hover {
+  transform: translateY(-2px) scale(1.005);
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.11), 0 6px 9px rgba(70, 80, 80, 0.48)
+}
+.button_r:active {
+  transform: translateY(2px) scale(0.995);
+  box-shadow: none;
+}
