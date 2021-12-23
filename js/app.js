@@ -26,11 +26,18 @@ const generateRandomString = (stringLength = 5) => {
   return randomString;
 };
 
-function setHash() {
-  if (Boolean(window.location.hash) === false) {
-    window.location.hash = generateRandomString();
+const setHash = () => {
+  window.location.hash = "";
+  window.location.hash = generateRandomString();
+};
+
+const removeHash = () => {
+  let { location, history } = window;
+  location.hash = "";
+  if ("replaceState" in history) {
+    history.replaceState("", document.title, `${location.pathname}${location.search}`);
   }
-}
+};
 
 const postData = async (url = "", data = {}, contentType = "application/json") => {
   if (url && data) {
@@ -61,16 +68,14 @@ function shortenUrl() {
     setHash();
     postData(`${endpoint}/${window.location.hash.substr(1)}`, { url: longUrl })
       .then((data) => {
-        console.log("postData", data);
         document.querySelector("#shortenedUrl").innerHTML = window.location.href;
         document.querySelector("#shortenedUrl").href = window.location.href;
         document.querySelector("#shortenedUrlContainer").style.display = "flex";
       })
       .then(() => {
-        window.location.hash = "";
-        window.history.replaceState({}, document.title, "/shurl/");
+        removeHash();
       })
-      .catch((err) => console.log(`${err.name}:${err.message}`));
+      .catch((err) => console.log(err));
   } else {
     alert("Please enter an URL to shorten!");
   }
@@ -80,12 +85,11 @@ const documentOnload = () => {
   if (window.location.hash) {
     getData(endpoint + "/" + hash)
       .then((data) => {
-        console.log("getData", data);
         if (data && data[data?.length - 1]?.url) {
           window.location.href = data[0].url;
         }
       })
-      .catch((err) => console.log(`${err.name}:${err.message}`));
+      .catch((err) => console.log(err));
   } else {
     document.body.classList.remove("none");
     document.body.classList.add("flex");
@@ -94,3 +98,24 @@ const documentOnload = () => {
     document.title = "SHURL - Simple URL Shortener";
   }
 };
+
+document.onreadystatechange = onReadyStateChange;
+document.addEventListener("DOMContentLoaded", onDomLoad);
+window.addEventListener("load", onPageLoad);
+
+let count = 0;
+function onReadyStateChange(event) {
+  count++;
+  console.log("document state:", document.readyState);
+  if (count === 1) {
+    documentOnload();
+  }
+}
+
+function onDomLoad(event) {
+  console.log("DomLoad");
+}
+
+function onPageLoad(event) {
+  console.log("PageLoad");
+}

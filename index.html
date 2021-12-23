@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="./css/normalize.css" />
     <link rel="stylesheet" href="./css/style.css" />
   </head>
-  <body class="none" onload="documentOnload()">
+  <body class="none">
     <div style="white-space: nowrap; font-size: xx-large; font-weight: bolder; text-transform: uppercase; color: #fff">
       URL Shortener
     </div>
@@ -25,7 +25,8 @@
       <input type="submit" value="Shorten URL" style="flex: 0; height: 40px; border-radius: 5px; padding: 0px 10px" />
     </form>
     <div id="shortenedUrlContainer" style="display: none; margin-top: 40px; white-space: nowrap; color: #fff">
-      Shortened URL:&nbsp;&nbsp;<a id="shortenedUrl" href="#" onclick="redirect(this)" style="color: #4caeff"></a>
+      <span>Shortened URL:&ensp;</span>
+      <a id="shortenedUrl" href="#" target="_blank" onclick="redirect(this)" style="color: #4caeff"></a>
     </div>
     <script>
       function redirect(anchor) {
