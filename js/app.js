@@ -89,7 +89,7 @@ const documentOnload = () => {
   } else {
     document.body.classList.remove("none");
     document.body.classList.add("flex");
-    document.body.style.background = `url("../img/bg.jpg") repeat fixed top center`;
+    document.body.style.background = `url("./img/bg.jpg") repeat fixed top center`;
     document.body.style.backgroundColor = primaryColor;
     document.title = "SHURL - Simple URL Shortener";
   }
