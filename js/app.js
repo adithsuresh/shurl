@@ -109,7 +109,7 @@ const showUrlshortner = () => {
   document.querySelectorAll(".container")[0].classList.remove("none");
   document.body.classList.add("flex");
   document.body.style.background = `url("./img/bg.jpg") repeat fixed top center ${bgColor}`;
-  document.title = "SHURL - Simple URL Shortener";
+  document.title = "Simple URL Shortener - Shorten Long URL's";
   setFavicon("/images/favicon.png");
 };
 
